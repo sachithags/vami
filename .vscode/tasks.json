@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Vami: check server syntax",
+      "type": "shell",
+      "command": "node",
+      "args": ["--check", "server.mjs"],
+      "problemMatcher": []
+    }
+  ]
+}
