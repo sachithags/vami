@@ -33,7 +33,7 @@ The upload flow automatically requests a plain-language review of the document b
 - User accounts are stored in local `data/users.json`; sessions and rate-limit counters are held in process memory and disappear after restart. There is no email verification, password reset, account recovery, multi-factor authentication, concurrent-registration lock, or cloud identity provider.
 - No distributed rate limiter, abuse detection, CAPTCHA, bot defense, audit retention policy, encryption-at-rest service, secrets manager, vulnerability scanning, or incident-response tooling is configured.
 - No server-side malware scan, PDF page-count cap, OCR quality score, extracted-source citation, independent factual verification, or human escalation channel exists yet.
-- Vami does not persist the document, but Gemini/Gnani process the submitted content. The project owner must review those providers' current data-processing terms before handling real personal data.
+- Vami does not persist the document. Gemini requests use the Interactions API with `store: false`, so the interaction is not stored as a conversation resource; Gemini and Gnani still process submitted content. The project owner must review those providers' current data-processing terms before handling real personal data.
 - The development server is HTTP for localhost. A public deployment must use HTTPS and production-grade session/storage controls; do not expose this prototype directly to the internet.
 
 ## Monitoring and logging plan

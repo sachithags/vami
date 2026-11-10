@@ -36,7 +36,7 @@ This comparison was checked against the vendors' current official help pages: [C
 
 - **Prisma v3 speech-to-text:** the microphone audio is converted to 16 kHz mono WAV and sent to Gnani's REST transcription API.
 - **Timbre v2.5 text-to-speech:** the answer is streamed as PCM audio chunks; the client begins playback while later chunks are still arriving. Vami selects a voice and language for each supported Indian language.
-- **Gemini Flash:** multimodal document reading and answer reasoning. This part currently uses a second provider. Name this clearly in the submission and demo; don't imply that Gnani generates the answer. The contest page lists Prisma and Timbre APIs and Evon v3.3 open weights, so a later single-provider version could replace Gemini with Evon after access and hosting are confirmed.
+- **Gemini 3.8 Flash via Interactions API:** multimodal document reading and answer reasoning. This part currently uses a second provider. Name this clearly in the submission and demo; don't imply that Gnani generates the answer. The contest page lists Prisma and Timbre APIs and Evon v3.3 open weights, so a later single-provider version could replace Gemini with Evon after access and hosting are confirmed.
 
 ## Features in the current project
 
@@ -132,7 +132,7 @@ Keep the recording to 50–60 seconds. Do not use a synthetic result as if it ca
 1. **0:00–0:20 — Person and pain.** “A parent receives an English policy schedule and wants to know what they pay and when.”
 2. **0:20–0:40 — Upload.** Sign into the demo account, add a synthetic sample, show the filename and selected language.
 3. **0:40–1:10 — Voice.** Record one natural Tamil/Hindi/etc. question. Show the transcript and identify Prisma.
-4. **1:10–1:45 — Grounded answer.** Ask about a visible date/amount/exclusion. Read the sentence in the PDF and compare to the answer. Mention Gemini is the document-reasoning provider in this prototype.
+4. **1:10–1:45 — Grounded answer.** Ask about a visible date/amount/exclusion. Read the sentence in the PDF and compare to the answer. Mention Gemini 3.8 Flash through the Interactions API is the document-reasoning provider in this prototype.
 5. **1:45–2:15 — Timbre.** Play the streamed response; ask one follow-up hands-free. Mention Timbre v2.5's streamed audio and language-matched voice.
 6. **2:15–2:40 — Trust.** Show the professional boundary: Vami explains document wording and doesn't tell someone to sign, borrow, buy, or cancel.
 7. **2:40–3:00 — Close.** State the impact, API contribution, and the next feature: answers linked to source page and sentence.
@@ -156,7 +156,7 @@ Keep the recording to 50–60 seconds. Do not use a synthetic result as if it ca
 
 **Solution:** Vami lets a user upload a document or capture it with a phone, ask a question in their language, and hear a plain-language explanation tied to that document.
 
-**Gnani APIs:** Gnani Prisma v3 REST speech-to-text; Gnani Timbre v2.5 SSE text-to-speech (language-matched voice selected in the app). **Other model:** Gemini Flash is used for document reading and answer reasoning in this prototype.
+**Gnani APIs:** Gnani Prisma v3 REST speech-to-text; Gnani Timbre v2.5 SSE text-to-speech (language-matched voice selected in the app). **Other model:** Gemini 3.8 Flash through Google's Interactions API is used for document reading and answer reasoning in this prototype.
 
 **Impact:** Reduces the language and reading barrier between a family and the information in a document. It does not replace professional advice or make decisions for the user.
 

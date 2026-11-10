@@ -18,14 +18,14 @@ VS Code, Node.js 24, and npm are already available on the computer where this fo
    ```dotenv
    GNANI_API_KEY_ID=your_gnani_api_key_id
    GEMINI_API_KEY=your_gemini_api_key
-   PORT=3000
+   PORT=3001
    ```
 
    The `.env` file is excluded from Git. Keep it on your computer and never paste keys into `index.html`, source code, screenshots, or a public repository.
 3. Press **F5** and choose **Run Vami (F5)** if prompted. Or open **Terminal → New Terminal** and run `npm start`.
-4. Visit <http://localhost:3000>. If you add keys while the server is running, stop it with **Ctrl+C** and start it again.
+4. Visit <http://localhost:3001> (or the port printed by the server). If you add keys while the server is running, stop it with **Ctrl+C** and start it again.
 
-If you see **“Document reasoning is not configured yet”**, add a valid `GEMINI_API_KEY` to `.env` and restart the server. Gnani speech is configured separately with `GNANI_API_KEY_ID`. Check **http://localhost:3000/api/health** to see whether each service is detected; it reports presence only and never returns the key.
+If you see **“Document reasoning is not configured yet”**, add a valid `GEMINI_API_KEY` to `.env` and restart the server. Gnani speech is configured separately with `GNANI_API_KEY_ID`. Check `http://localhost:<PORT>/api/health` to see whether each service is detected; it reports presence only and never returns the key.
 
 ## Deploy to Render
 
