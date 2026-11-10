@@ -23,7 +23,7 @@ The upload flow automatically requests a plain-language review of the document b
 - Uploaded documents are accepted in memory, limited to 12 MB in the client, and are not written to disk. The reasoning provider receives the file only when the user asks for a response/review.
 - Gnani API keys are read server-side. They are never returned by `/api/health` or inserted into the page.
 - Basic per-process limits: 8 authentication attempts, 12 document questions, 10 voice transcriptions, and 15 speech generations per minute per session (authentication attempts per source IP). Question, document, request-body, and response sizes are bounded.
-- Provider requests have timeouts. API calls require an authenticated session. Static serving exposes only the app page, not `.env`, account records, or server source.
+- Provider requests have timeouts. Gemini retries temporary overload and gateway errors up to three attempts, then returns a short friendly error instead of an upstream stack message. API calls require an authenticated session. Static serving exposes only the app page, not `.env`, account records, or server source.
 - Structured request logs contain timestamp, request ID, route, HTTP method, status, and elapsed time. They intentionally omit email, IP address, transcripts, document content, and prompts.
 - `/api/health` reports uptime, whether providers are configured, and aggregate request/error counts. It does not ping providers or reveal credential values.
 - The UI explains that files are sent to configured AI providers, and includes clear boundaries around claims, contracts, gambling, and financial decisions.
