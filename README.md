@@ -23,13 +23,7 @@ Loan agreements, insurance policies, bills, medical letters, and other documents
 
 That split is worth explaining in a demo: show Prisma transcribing a spoken Kannada question, Vami checking a sample loan document, then Timbre reading the answer aloud.
 
-## Try it locally
-
-Install Node.js 20 or newer, copy `.env.example` to `.env`, and add your provider keys. Then run:
-
-```powershell
-npm start
-```
+## Try it Live: https://vami-tsp0.onrender.com
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for GitHub and Render steps.
 
