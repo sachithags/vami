@@ -15,6 +15,14 @@ Loan agreements, insurance policies, bills, medical letters, and other documents
 - Use Gnani voice input and spoken replies in supported Indian languages, including English, Hindi, Tamil, Telugu, Kannada, Malayalam, Bengali, Marathi, Gujarati, and Punjabi. Availability depends on API access.
 - Create an account, sign in, and sign out. Vami does not save uploaded documents to its server.
 
+## Demo
+
+**Live app:** [Open Vami]([YOUR_RENDER_URL](https://vami-tsp0.onrender.com))
+
+**Video:** [Watch the demo](https://drive.google.com/file/d/1TwuV8vu5d2SB5dy6SgeLYe777295g0iO/view?usp=sharing)
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for GitHub and Render steps.
+
 ## How Gnani is used
 
 - **Gnani Prisma v3** turns recorded speech into text and detects the spoken language.
@@ -22,10 +30,6 @@ Loan agreements, insurance policies, bills, medical letters, and other documents
 - **Document answers use separate providers:** Groq Qwen 3.8 handles photos and plain text; Gemini 3.8 Flash reads PDFs and provides fallback for supported files. Gnani powers the listening and speaking parts of Vami, not document reasoning.
 
 That split is worth explaining in a demo: show Prisma transcribing a spoken Kannada question, Vami checking a sample loan document, then Timbre reading the answer aloud.
-
-## Try it Live: https://vami-tsp0.onrender.com
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for GitHub and Render steps.
 
 ## Limits to keep in mind
 
