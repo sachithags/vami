@@ -36,7 +36,7 @@ This comparison was checked against the vendors' current official help pages: [C
 
 - **Prisma v3 speech-to-text:** the microphone audio is converted to 16 kHz mono WAV and sent to Gnani's REST transcription API with `indic-auto`; Vami follows the detected language for its answer and voice.
 - **Timbre v2.5 text-to-speech:** the answer is streamed as PCM audio chunks; the client begins playback while later chunks are still arriving. Vami selects a voice and language for each supported Indian language.
-- **Gemini 3.8 Flash via Interactions API:** multimodal document reading and answer reasoning. This part currently uses a second provider. Name this clearly in the submission and demo; don't imply that Gnani generates the answer. The contest page lists Prisma and Timbre APIs and Evon v3.3 open weights, so a later single-provider version could replace Gemini with Evon after access and hosting are confirmed.
+- **Groq Qwen 3.8 vision and Gemini 3.8 Flash:** Groq is preferred for photos and plain text; Gemini reads PDFs and provides fallback. Name these providers clearly in the submission and demo; don't imply that Gnani generates the document answer. Gnani Prisma handles speech recognition and Timbre speaks the answer. The contest page lists Evon v3.3 open weights, so a later single-provider document pipeline could replace these after access and hosting are confirmed.
 
 ## Features in the current project
 
@@ -62,7 +62,7 @@ This comparison was checked against the vendors' current official help pages: [C
 ## Tradeoffs and risks to own honestly
 
 - **A wrong explanation could matter.** Contracts and policies need source references, uncertainty language, and a prominent reminder to confirm consequential decisions with the provider or a qualified person.
-- **Two AI providers mean two credentials and two possible costs.** Prisma and Timbre are Gnani; Gemini is the current document reasoner.
+- **Multiple AI services mean several credentials and provider limits.** Prisma and Timbre are Gnani; Groq and Gemini read documents. Groq's free plan has rate limits, and paid usage can be billed by token; check the console's current quota and billing before a public demo.
 - **Live voice depends on network and account access.** API credit, key permissions, microphone support, language selection, and service latency all need a real run-through before the public demo.
 - **The current accounts are a prototype.** User records are stored in a local JSON file and sessions live in server memory. This is not a hardened cloud identity system.
 - **The prototype does not save a cloud document library.** It keeps a selected file in the current browser session; be precise in the pitch about what does and does not persist.
@@ -132,7 +132,7 @@ Keep the recording to 50–60 seconds. Do not use a synthetic result as if it ca
 1. **0:00–0:20 — Person and pain.** “A parent receives an English policy schedule and wants to know what they pay and when.”
 2. **0:20–0:40 — Upload.** Sign into the demo account, add a synthetic sample, show the filename and selected language.
 3. **0:40–1:10 — Voice.** Record one natural Tamil/Hindi/etc. question. Show the transcript and identify Prisma.
-4. **1:10–1:45 — Grounded answer.** Ask in Kannada without changing the language selector. Show Prisma detecting Kannada, Vami changing the reply language, and Timbre speaking the answer automatically. Read the sentence in the PDF and compare to the answer. Mention Gemini 3.8 Flash through the Interactions API is the document-reasoning provider in this prototype.
+4. **1:10–1:45 — Grounded answer.** Ask in Kannada without changing the language selector. Show Prisma detecting Kannada, Vami changing the reply language, and Timbre speaking the answer automatically. Use a photo to demonstrate Groq Qwen vision, or use a PDF to demonstrate Gemini 3.8 Flash through the Interactions API. Explain that Vami keeps PDF reading on Gemini and fails over to the other configured provider when possible.
 5. **1:45–2:15 — Timbre.** Let Vami speak the answer automatically, then ask one follow-up hands-free. Mention Timbre v2.5's streamed audio and language-matched voice.
 6. **2:15–2:40 — Trust.** Show the professional boundary: Vami explains document wording and doesn't tell someone to sign, borrow, buy, or cancel.
 7. **2:40–3:00 — Close.** State the impact, API contribution, and the next feature: answers linked to source page and sentence.
@@ -156,7 +156,7 @@ Keep the recording to 50–60 seconds. Do not use a synthetic result as if it ca
 
 **Solution:** Vami lets a user upload a document or capture it with a phone, ask a question in their language, and hear a plain-language explanation tied to that document.
 
-**Gnani APIs:** Gnani Prisma v3 REST speech-to-text; Gnani Timbre v2.5 SSE text-to-speech (language-matched voice selected in the app). **Other model:** Gemini 3.8 Flash through Google's Interactions API is used for document reading and answer reasoning in this prototype.
+**Gnani APIs:** Gnani Prisma v3 REST speech-to-text; Gnani Timbre v2.5 SSE text-to-speech (language-matched voice selected in the app). **Document models:** Groq Qwen 3.8 vision for images and text, with Gemini 3.8 Flash through Google's Interactions API as a fallback and PDF reader.
 
 **Impact:** Reduces the language and reading barrier between a family and the information in a document. It does not replace professional advice or make decisions for the user.
 

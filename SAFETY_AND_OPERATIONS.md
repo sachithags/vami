@@ -23,7 +23,7 @@ The upload flow automatically requests a plain-language review of the document b
 - Uploaded documents are accepted in memory, limited to 12 MB in the client, and are not written to disk. The reasoning provider receives the file only when the user asks for a response/review.
 - Gnani API keys are read server-side. They are never returned by `/api/health` or inserted into the page.
 - Basic per-process limits: 8 authentication attempts, 12 document questions, 10 voice transcriptions, and 15 speech generations per minute per session (authentication attempts per source IP). Question, document, request-body, and response sizes are bounded.
-- Provider requests have timeouts. Gemini retries temporary overload and gateway errors up to three attempts, then returns a short friendly error instead of an upstream stack message. API calls require an authenticated session. Static serving exposes only the app page, not `.env`, account records, or server source.
+- Provider requests have 22-second timeouts. Photos and plain text try Groq first, then Gemini; PDFs use Gemini. If a configured provider is busy or times out, Vami switches to the other compatible provider and then returns a short friendly message. API calls require an authenticated session. Static serving exposes only the app page, not `.env`, account records, or server source.
 - Structured request logs contain timestamp, request ID, route, HTTP method, status, and elapsed time. They intentionally omit email, IP address, transcripts, document content, and prompts.
 - `/api/health` reports uptime, whether providers are configured, and aggregate request/error counts. It does not ping providers or reveal credential values.
 - The UI explains that files are sent to configured AI providers, and includes clear boundaries around claims, contracts, gambling, and financial decisions.
@@ -33,7 +33,7 @@ The upload flow automatically requests a plain-language review of the document b
 - User accounts are stored in local `data/users.json`; sessions and rate-limit counters are held in process memory and disappear after restart. There is no email verification, password reset, account recovery, multi-factor authentication, concurrent-registration lock, or cloud identity provider.
 - No distributed rate limiter, abuse detection, CAPTCHA, bot defense, audit retention policy, encryption-at-rest service, secrets manager, vulnerability scanning, or incident-response tooling is configured.
 - No server-side malware scan, PDF page-count cap, OCR quality score, extracted-source citation, independent factual verification, or human escalation channel exists yet.
-- Vami does not persist the document. Gemini requests use the Interactions API with `store: false`, so the interaction is not stored as a conversation resource; Gemini and Gnani still process submitted content. The project owner must review those providers' current data-processing terms before handling real personal data.
+- Vami does not persist the document. Gemini requests use the Interactions API with `store: false`, but Google and Groq still process submitted content; Gnani processes voice audio. The project owner must review each provider's current data-processing terms before handling real personal data.
 - The development server is HTTP for localhost. A public deployment must use HTTPS and production-grade session/storage controls; do not expose this prototype directly to the internet.
 
 ## Monitoring and logging plan
