@@ -31,7 +31,7 @@ Install Node.js 20 or newer, copy `.env.example` to `.env`, and add your provide
 npm start
 ```
 
-Open the local address printed by the server. The default port is `3000`. See [DEPLOYMENT.md](DEPLOYMENT.md) for GitHub and Render steps.
+See [DEPLOYMENT.md](DEPLOYMENT.md) for GitHub and Render steps.
 
 ## Limits to keep in mind
 
