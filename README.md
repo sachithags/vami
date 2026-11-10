@@ -17,7 +17,7 @@ Loan agreements, insurance policies, bills, medical letters, and other documents
 
 ## Demo
 
-**Live app:** [Open Vami]([YOUR_RENDER_URL](https://vami-tsp0.onrender.com))
+**Live app:** [Open Vami]([https://vami-tsp0.onrender.com]
 
 **Video:** [Watch the demo](https://drive.google.com/file/d/1TwuV8vu5d2SB5dy6SgeLYe777295g0iO/view?usp=sharing)
 
